@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="stylesheet" href="/css/home.css" type="text/css">
 </head>
 <body>
-HR home
+
+
+
+<div class="table-wrapper">
+    <table class="fl-table">
+        <caption class="text-caption">List of all employees.</caption>
+        <thead>
+        <tr>
+            <th scope="col">Employee ID</th>
+            <th scope="col">Employee Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Email</th>
+            <th scope="col">Date of Birth</th>
+        </tr>
+        </thead>
+        <tr th:each="result : ${employees}">
+            <td th:text="${result.employeeCode}">123</td>
+            <td th:text="${result.employeeName}">Joe</td>
+            <td th:text="${result.location}">Smith</td>
+            <td th:text="${result.email}">00:00</td>
+            <td th:text="${result.dateOfBirth}">00:00</td>
+        </tr>
+    </table>
+</div>
+
 </body>
 </html>
