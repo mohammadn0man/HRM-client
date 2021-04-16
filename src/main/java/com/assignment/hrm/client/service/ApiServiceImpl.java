@@ -66,4 +66,14 @@ public class ApiServiceImpl {
                 .bodyToMono(Void.class);
     }
 
+    public Employee addEmployee(Employee employee){
+        return webClient.post()
+                .uri("/addemployee")
+                .body(Mono.just(employee), Employee.class)
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .bodyToMono(Employee.class)
+                .block();
+    }
+
 }

@@ -17,14 +17,14 @@ public class LoginController {
         this.apiService = apiService;
     }
 
-    @GetMapping("/home")
-    public String goToHome(){
-        return "home";
+    @GetMapping("/index")
+    public String goToHome(ModelMap modelMap) {
+        return "index";
     }
 
     @PostMapping("/login")
     public String formPost(@ModelAttribute("user") User user, ModelMap modelMap) {
-        if(apiService.validate(user)){
+        if (apiService.validate(user)) {
             modelMap.put("employees", apiService.findAll());
             return "home";
         }

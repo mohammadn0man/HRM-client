@@ -126,3 +126,14 @@ h2, .text-caption{
         text-align: center;
     }
 }
+
+#outer
+{
+    padding:20px 100px 20px 150px;
+    width:100%;
+    text-align: center;
+}
+.inner
+{
+    display: inline-block;
+}

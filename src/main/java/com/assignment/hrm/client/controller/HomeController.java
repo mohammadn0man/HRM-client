@@ -34,4 +34,16 @@ public class HomeController {
         return "home";
     }
 
+    @PostMapping("/save_employee")
+    public String saveEmployee(@ModelAttribute("employee") Employee employee, ModelMap modelMap){
+        apiService.addEmployee(employee);
+        modelMap.put("employees", apiService.findAll());
+        return "home";
+    }
+
+    @GetMapping("/add_employee")
+    public String addEmployee(){
+        return "add_form";
+    }
+
 }
