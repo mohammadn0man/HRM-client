@@ -1,7 +1,7 @@
 package com.assignment.hrm.client.controller;
 
 import com.assignment.hrm.client.model.User;
-import com.assignment.hrm.client.service.ApiServiceImpl;
+import com.assignment.hrm.client.service.ApiService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class LoginController {
 
-    ApiServiceImpl apiService;
+    ApiService apiService;
 
-    public LoginController(ApiServiceImpl apiService) {
+    public LoginController(ApiService apiService) {
         this.apiService = apiService;
     }
 

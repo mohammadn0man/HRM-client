@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ApiServiceImpl {
+public class ApiServiceImpl implements ApiService {
 
     private final WebClient webClient;
 
@@ -24,6 +24,7 @@ public class ApiServiceImpl {
     }
 
 
+    @Override
     public boolean validate(User user) {
         return webClient.post()
                 .uri("/validatehr")
@@ -33,6 +34,7 @@ public class ApiServiceImpl {
                 .block();
     }
 
+    @Override
     public List<Employee> findAll() {
         Mono<Object[]> response = webClient.get()
                 .uri("/employees")
@@ -49,6 +51,7 @@ public class ApiServiceImpl {
                 .collect(Collectors.toList());
     }
 
+    @Override
     public Employee getEmployee(String employeeCode) {
         return webClient.get()
                 .uri("/employee/{employeeCode}", employeeCode)
@@ -58,15 +61,27 @@ public class ApiServiceImpl {
                 .block();
     }
 
-    public void editEmployee(Employee employee) {
-        webClient.put()
-                .uri("/editemployee/{id}", employee.getEmployeeCode())
+    @Override
+    public Employee editEmployee(Employee employee) {
+        return webClient.post()
+                .uri("/editemp")
                 .body(Mono.just(employee), Employee.class)
+                .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
-                .bodyToMono(Void.class);
+                .bodyToMono(Employee.class)
+                .block();
     }
+//    @Override
+//    public void editEmployee(Employee employee) {
+//        webClient.put()
+//                .uri("/editemployee/{id}", employee.getEmployeeCode())
+//                .body(Mono.just(employee), Employee.class)
+//                .retrieve()
+//                .bodyToMono(Void.class);
+//    }
 
-    public Employee addEmployee(Employee employee){
+    @Override
+    public Employee addEmployee(Employee employee) {
         return webClient.post()
                 .uri("/addemployee")
                 .body(Mono.just(employee), Employee.class)

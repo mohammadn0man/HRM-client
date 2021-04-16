@@ -1,14 +1,11 @@
 package com.assignment.hrm.client.controller;
 
 import com.assignment.hrm.client.model.Employee;
-import com.assignment.hrm.client.service.ApiServiceImpl;
+import com.assignment.hrm.client.service.ApiService;
 import com.assignment.hrm.client.util.UserExcelExporter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -20,9 +17,9 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    ApiServiceImpl apiService;
+    ApiService apiService;
 
-    public HomeController(ApiServiceImpl apiService) {
+    public HomeController(ApiService apiService) {
         this.apiService = apiService;
     }
 
