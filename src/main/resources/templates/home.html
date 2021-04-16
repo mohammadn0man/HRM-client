@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="/css/home.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 <body>
-
 
 
 <div class="table-wrapper">
@@ -19,6 +20,7 @@
             <th scope="col">Location</th>
             <th scope="col">Email</th>
             <th scope="col">Date of Birth</th>
+            <th scope="col">Edit</th>
         </tr>
         </thead>
         <tr th:each="result : ${employees}">
@@ -27,6 +29,12 @@
             <td th:text="${result.location}">Smith</td>
             <td th:text="${result.email}">00:00</td>
             <td th:text="${result.dateOfBirth}">00:00</td>
+            <td>
+                <form th:action="@{/edit_form/}">
+                    <input th:value="${result.employeeCode}" type="hidden" name="employeeCode">
+                    <button type="submit" class="btn btn-success">Edit</button>
+                </form>
+            </td>
         </tr>
     </table>
 </div>

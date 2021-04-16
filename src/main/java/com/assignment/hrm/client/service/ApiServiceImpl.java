@@ -33,12 +33,12 @@ public class ApiServiceImpl {
                 .block();
     }
 
-    public List<Employee> findAll(){
+    public List<Employee> findAll() {
         Mono<Object[]> response = webClient.get()
                 .uri("/employees")
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
-                .bodyToMono(Object[].class).log();
+                .bodyToMono(Object[].class);
 
         Object[] objects = response.block();
 
@@ -49,5 +49,21 @@ public class ApiServiceImpl {
                 .collect(Collectors.toList());
     }
 
+    public Employee getEmployee(String employeeCode) {
+        return webClient.get()
+                .uri("/employee/{employeeCode}", employeeCode)
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .bodyToMono(Employee.class)
+                .block();
+    }
+
+    public void editEmployee(Employee employee) {
+        webClient.put()
+                .uri("/editemployee/{id}", employee.getEmployeeCode())
+                .body(Mono.just(employee), Employee.class)
+                .retrieve()
+                .bodyToMono(Void.class);
+    }
 
 }
