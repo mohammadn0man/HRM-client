@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+/**
+ * LoginController
+ * <p>login validation call for api</p>
+ * <p>validate and retrive all data to populate view</p>
+ */
 @Controller
 public class LoginController {
 

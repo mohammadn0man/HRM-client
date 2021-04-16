@@ -14,6 +14,10 @@ import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+/**
+ * custom class to export data to excel format
+ */
+
 public class UserExcelExporter {
     private XSSFWorkbook workbook;
     private XSSFSheet sheet;

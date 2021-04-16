@@ -14,6 +14,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * HomeController
+ * <p>list of functions</p>
+ * <p>add employee - insert new record of emplouee using addemploee api</p>
+ * <p>edit employee - edit details of employee with given id</p>
+ * <p>download data - download data in excel format of all employees</p>
+ */
 @Controller
 public class HomeController {
 
@@ -55,9 +62,11 @@ public class HomeController {
     public String downloadData(HttpServletResponse response, ModelMap modelMap) throws IOException {
 
         response.setContentType("application/octet-stream");
+        //using current time to name download file
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
         String currentDateTime = dateFormatter.format(new Date());
 
+        // creating file name
         String headerKey = "Content-Disposition";
         String headerValue = "attachment; filename=employees_" + currentDateTime + ".xlsx";
         response.setHeader(headerKey, headerValue);

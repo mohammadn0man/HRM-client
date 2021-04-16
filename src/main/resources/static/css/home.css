@@ -21,6 +21,9 @@ h2, .text-caption{
 
 .table-wrapper{
     margin: 10px 70px 70px;
+    height:500px;
+    overflow:scroll;
+    position:relative;
     box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
 }
 
