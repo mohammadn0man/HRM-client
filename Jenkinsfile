@@ -14,6 +14,10 @@ pipeline {
             steps{
             bat "mvn test"
             }
+        }stage("deploy code"){
+            steps{
+            echo "deploy code....."
+            }
         }
     }
 }
