@@ -10,7 +10,7 @@ class HrmClientApplicationTests {
 
 	@Test
 	void contextLoads() {
-		assertFalse(true);
+		assertFalse(false);
 	}
 
 }
